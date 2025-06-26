@@ -7,6 +7,6 @@ describe('Hello test', () => {
     const mainApp: MainApp = new MainApp();
     mainApp.setName(name);
 
-    expect(mainApp.getName()).toEqual(name);
+    expect(mainApp.getName()).toEqual('Fail');
   });
 });
