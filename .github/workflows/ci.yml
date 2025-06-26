@@ -37,7 +37,7 @@ jobs:
           mkdir -p coverage/html
           cp -r coverage/* coverage/html/
       - name: Upload coverage artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: test-coverage-report
           path: coverage/html
