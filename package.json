@@ -12,14 +12,15 @@
   },
   "license": "ISC",
   "author": "Alan J Macfarlane",
-  "type": "commonjs",
-  "main": "index.js",
+  "type": "module",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "npm run build",
+    "build": "tsc --project tsconfig.build.json",
     "test": "vitest --run --passWithNoTests"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^3.2.4",
+    "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }
 }

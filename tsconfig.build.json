@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "declaration": true,
+    "declarationDir": "dist/types"
+  },
+  "exclude": ["./dist/types/**/*", "./vite.config.ts", "./src/**/*.test.ts"]
+}
