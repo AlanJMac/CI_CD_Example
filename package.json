@@ -1,0 +1,25 @@
+{
+  "name": "ci_cd_example",
+  "version": "1.0.0",
+  "description": "Prototype for testing CI and CD workflows",
+  "homepage": "https://github.com/AlanJMac/CI_CD_Example#readme",
+  "bugs": {
+    "url": "https://github.com/AlanJMac/CI_CD_Example/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanJMac/CI_CD_Example.git"
+  },
+  "license": "ISC",
+  "author": "Alan J Macfarlane",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build",
+    "test": "vitest --run --passWithNoTests"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^3.2.4",
+    "vitest": "^3.2.4"
+  }
+}
