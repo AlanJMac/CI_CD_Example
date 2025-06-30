@@ -1,0 +1,24 @@
+name: Update Staging Environment Config on Prerelease
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  helm-package:
+    if: github.event.release.prerelease == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout build repo
+        uses: actions/checkout@v3
+
+      - name: Clone config repo
+        env:
+          CONFIG_REPO_PAT: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git clone https://x-access-token:${CONFIG_REPO_PAT}@github.com:AlanJMac/CI_CD_Config_Repo.git
+
+      - name: Update staging Helm chart in config repo
+        run: |
+          rm -rf config-repo/charts/staging/
+          cp -R ci-cd-example/ config-repo/charts/staging/
