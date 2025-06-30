@@ -1,4 +1,4 @@
-name: Update Staging Environment Config on Pre-Release
+name: Update Production Environment Config on Release
 
 on:
   release:
@@ -7,7 +7,7 @@ on:
 env:
   CONFIG_REPO_PAT: ${{ secrets.PAT_TOKEN }}
   CONFIG_REPO: CI_CD_Config_Repo
-  TARGET_ENV: staging
+  TARGET_ENV: production
 
 jobs:
   helm-package:
