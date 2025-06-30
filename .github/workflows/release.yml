@@ -2,7 +2,7 @@ name: Update Production Environment Config on Release
 
 on:
   release:
-    types: [published]
+    types: [released]
 
 env:
   CONFIG_REPO_PAT: ${{ secrets.PAT_TOKEN }}
