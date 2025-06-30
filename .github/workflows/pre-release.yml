@@ -23,3 +23,23 @@ jobs:
           rm -rf config-repo/charts/staging/
           mkdir -p config-repo/charts/staging
           cp -R ci-cd-example/ config-repo/charts/staging/
+
+      - name: Commit and push changes to config repo
+        env:
+          CONFIG_REPO_PAT: ${{ secrets.PAT_TOKEN }}
+        run: |
+          cd config-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add charts/staging/
+          git commit -m "Update staging Helm chart from build repo - $GITHUB_SHA"
+          git push origin main
+
+      - name: Create and push Git tag in config repo
+        env:
+          CONFIG_REPO_PAT: ${{ secrets.PAT_TOKEN }}
+        run: |
+          cd config-repo
+          TAG="deploy-${GITHUB_REF_NAME}-${GITHUB_SHA::8}"
+          git tag $TAG
+          git push origin $TAG
