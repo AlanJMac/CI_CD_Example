@@ -19,12 +19,18 @@ jobs:
         run: |
           helm package ci-cd-example
 
+      - name: Find packaged Helm chart
+        id: find_chart
+        run: |
+          FILE=$(ls ci-cd-example-*.tgz)
+          echo "chart_file=$FILE" >> $GITHUB_OUTPUT
+
       - name: Upload Helm chart as release asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./ci-cd-example-*.tgz
-          asset_name: ci-cd-example-{{ github.event.release.tag_name }}.tgz
+          asset_path: ${{ steps.find_chart.outputs.chart_file }}
+          asset_name: ${{ steps.find_chart.outputs.chart_file }}
           asset_content_type: application/gzip
