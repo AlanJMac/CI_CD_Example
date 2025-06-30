@@ -20,15 +20,15 @@ jobs:
 
       - name: Update staging Helm chart in config repo
         run: |
-          rm -rf config-repo/charts/staging/
-          mkdir -p config-repo/charts/staging
-          cp -R ci-cd-example/ config-repo/charts/staging/
+          rm -rf CI_CD_Config_Repo/charts/staging/
+          mkdir -p CI_CD_Config_Repo/charts/staging
+          cp -R ci-cd-example/ CI_CD_Config_Repo/charts/staging/
 
       - name: Commit and push changes to config repo
         env:
           CONFIG_REPO_PAT: ${{ secrets.PAT_TOKEN }}
         run: |
-          cd config-repo
+          cd CI_CD_Config_Repo
           git checkout main
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -40,7 +40,7 @@ jobs:
         env:
           CONFIG_REPO_PAT: ${{ secrets.PAT_TOKEN }}
         run: |
-          cd config-repo
+          cd CI_CD_Config_Repo
           git checkout main
           TAG="deploy-${GITHUB_REF_NAME}-${GITHUB_SHA::8}"
           git tag $TAG
