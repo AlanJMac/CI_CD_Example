@@ -21,4 +21,5 @@ jobs:
       - name: Update staging Helm chart in config repo
         run: |
           rm -rf config-repo/charts/staging/
+          mkdir -p config-repo/charts/staging
           cp -R ci-cd-example/ config-repo/charts/staging/
